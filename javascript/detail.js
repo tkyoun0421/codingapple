@@ -18,11 +18,19 @@ $('.form-select').eq(0).on('input', function(e){
   }
 });
 
-var obj = {
-  name: 'kim',
-  age: 20
-}
+$.get('https://codingapple1.github.io/price.json')
+.done(function(data){
+  console.log(data); 
+})
+.fail(function(){
+  console.log('실패함');
+});
 
-for (var key in obj){
-  console.log(obj[key]);
-}
+fetch('https://codingapple1.github.io/price.json')
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => {
+    console.log(error)
+  })
