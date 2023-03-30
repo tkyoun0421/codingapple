@@ -10,12 +10,33 @@ let template = `
   <p>가격 : 70000</p>
 `;
 
+let count = 0;
 
-for (let i = 0; i < products.length; i++){
-  const div = document.createElement('div');
-  div.innerHTML = template;
-  div.classList.add('col-sm-4');
-  document.querySelector('.row').appendChild(div);
-  document.querySelectorAll('.col-sm-4 h5')[i].innerHTML = products[i].title;
-  document.querySelectorAll('.col-sm-4 p')[i].innerHTML = products[i].price;
-};
+
+createDiv(products);
+
+document.querySelector('#more').addEventListener('click', function(){
+  count++;
+  if (count == 2) {
+    document.querySelector('#more').style.display = 'none'
+  }
+  fetch(`https://codingapple1.github.io/js/more${count}.json`)
+  .then(res => res.json())
+  .then(data => {
+    createDiv(data);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+});
+
+function createDiv(arr) {
+  arr.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.classList.add('col-sm-4');
+    div.innerHTML = template;
+    document.querySelector('.row').appendChild(div);
+    document.querySelectorAll('.col-sm-4 h5')[arr[i].id].innerHTML = arr[i].title;
+    document.querySelectorAll('.col-sm-4 p')[arr[i].id].innerHTML = arr[i].price;
+  })
+}
