@@ -45,8 +45,8 @@
     ];
     
     for (let i = 0; i < $('.card-body').length; i++) {
-      $('.card-body h5').eq(i).html(products[i].title);
-      $('.card-body p').eq(i).html(`가격 : ${products[i].price}`);
+      document.querySelectorAll('.card-body h5')[i].innerHTML = products[i].title;
+      document.querySelectorAll('.card-body p')[i].innerHTML = products[i].price;
     }
   </script> 
 </body>
