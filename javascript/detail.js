@@ -1,36 +1,21 @@
-const pants = [28, 30, 32, 34];
-const shirt = [95, 100, 105, 110];
+var products = [
+  { id: 0, price: 70000, title: 'Blossom Dress'},
+  { id: 1, price: 50000, title: 'Springfield Shirt'},
+  { id: 2, price: 60000, title: 'Black Monastery'}
+]
 
-$('.form-select').eq(0).on('input', function(e){
-  let selectValue = e.currentTarget.value;
-  if (selectValue == '셔츠'){
-    $('.form-select').eq(1).removeClass('form-hide');
-    $('.form-select').eq(1).html('');
-    shirt.forEach(function(item){
-      $('.form-select').eq(1).append(`<option>${item}</option>`);
-    });
-  } else if (selectValue == '바지') {
-    $('.form-select').eq(1).removeClass('form-hide');    
-    $('.form-select').eq(1).html('');
-    pants.forEach(function(item) {
-      $('.form-select').eq(1).append(`<option>${item}</option>`);
-    });    
-  }
-});
+let template = `
+  <img src="https://via.placeholder.com/600" class="w-100">
+  <h5>Card title</h5>
+  <p>가격 : 70000</p>
+`;
 
-$.get('https://codingapple1.github.io/price.json')
-.done(function(data){
-  console.log(data); 
-})
-.fail(function(){
-  console.log('실패함');
-});
 
-fetch('https://codingapple1.github.io/price.json')
-  .then(res => res.json())
-  .then(data => {
-    console.log(data)
-  })
-  .catch(error => {
-    console.log(error)
-  })
+for (let i = 0; i < products.length; i++){
+  const div = document.createElement('div');
+  div.innerHTML = template;
+  div.classList.add('col-sm-4');
+  document.querySelector('.row').appendChild(div);
+  document.querySelectorAll('.col-sm-4 h5')[i].innerHTML = products[i].title;
+  document.querySelectorAll('.col-sm-4 p')[i].innerHTML = products[i].price;
+};
