@@ -4,14 +4,15 @@ var products = [
   { id: 2, price: 60000, title: 'Black Monastery'}
 ]
 
+let count = 0;
 
 let template = `
   <img src="https://via.placeholder.com/600" class="w-100">
   <h5>Card title</h5>
   <p>가격 : 70000</p>
+  <button class="buy">구매</button>
 `;
 
-let count = 0;
 
 
 createDiv(products);
@@ -33,7 +34,6 @@ document.querySelector('#more').addEventListener('click', function(){
 
 function createDiv(arr) {
   arr.forEach((item, i) => {
-    console.log(products);
     const div = document.createElement('div');
     div.classList.add('col-sm-4');
     div.innerHTML = template;
@@ -43,8 +43,17 @@ function createDiv(arr) {
   })
 }
 
-document.querySelector('#price').addEventListener('click', function(){
-  products.sort(function(a,b){
-    return a.price - b.price
-  });
+let cart = [];
+let productTitle;
+
+window.addEventListener('load', function(){
+  for (let i = 0; i < document.querySelectorAll('.buy').length; i++) {
+    document.querySelectorAll('.buy')[i].addEventListener('click', function(){
+      productTitle = this.previousElementSibling.previousElementSibling.innerHTML;
+      cart.push(productTitle);
+      let newCart = JSON.stringify(cart);
+      localStorage.setItem('cart', newCart);
+    });
+  }
 });
+
