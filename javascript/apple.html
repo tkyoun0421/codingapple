@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="card-background">
+    <div class="card-box">
+      <img src="./images/card1.png" alt="">
+    </div>
+    <div class="card-box">
+      <img src="./images/card2.png" alt="">
+    </div>
+    <div class="card-box">
+      <img src="./images/card3.png" alt="">
+    </div>
+  </div>
+
+  <script>
+
+    $(window).on('scroll', function(){
+      var 높이 = $(window).scrollTop();
+      console.log(`높이 : ${높이 + 800}`);
+      console.log(`박스1 : ${$('.card-box').eq(0).offset().top}`);
+      console.log(`박스2 : ${$('.card-box').eq(1).offset().top}`);
+      // $('.card-box').eq(0).css('opacity', y);
+    });
+
+  </script>
+</body>
+</html>
