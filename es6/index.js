@@ -1,11 +1,6 @@
-console.log(this)  // window
-
-var 오브젝트 = {
-  data : {
-    함수: () => {
-      console.log(this);
-    }
-  }
-}
-
-오브젝트.data.함수(); // window
+document.getElementById('버튼').addEventListener('click', function(e){
+  var 어레이 = [1,2,3];
+  어레이.forEach(function(){
+    console.log(this)
+  });
+});
