@@ -1,6 +1,4 @@
-document.getElementById('버튼').addEventListener('click', function(e){
-  var 어레이 = [1,2,3];
-  어레이.forEach(function(){
-    console.log(this)
-  });
-});
+var 두배만들기 = x => x * 2 ;
+
+console.log( 두배만들기(4) );
+console.log( 두배만들기(8) );
