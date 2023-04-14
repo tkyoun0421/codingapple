@@ -1,7 +1,6 @@
-function 함수(){
-
-  var 이름; 
-  console.log('hello');
-  이름 = 'Kim';
-  
+// tagged literal 사용 예시
+function 해체분석기(문자들,변수들) {
+  console.log(문자들[1] + 변수들 + 문자들[0]); // 입니다 손흥민안녕하세요
 }
+
+해체분석기`안녕하세요 ${이름}입니다.`
